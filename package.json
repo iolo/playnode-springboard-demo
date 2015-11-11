@@ -1,0 +1,46 @@
+{
+  "name": "playnode-springboard-demo",
+  "version": "1.0.0",
+  "description": "java/spring + nodejs + thrift + react demo",
+  "author": "Dongsu Jang <iolothebard@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://git@github.com/iolo/springboard-demo.git"
+  },
+  "engines": {
+    "node": ">=4.0",
+    "npm": ">=2.0"
+  },
+  "dependencies": {
+    "babel-preset-react": "^6.1.2",
+    "babelify": "^7.2.0",
+    "body-parser": "^1.14.1",
+    "cors": "^2.7.1",
+    "debug": "^2.2.0",
+    "ejs": "^2.3.4",
+    "es6-promise": "^3.0.2",
+    "express": "^4.13.3",
+    "express-session": "^1.12.1",
+    "flux": "^2.1.1",
+    "history": "^1.13.0",
+    "isomorphic-fetch": "^2.2.0",
+    "node-int64": "^0.4.0",
+    "node-jsx": "^0.13.3",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "react-redux": "^4.0.0",
+    "react-router": "^1.0.0-rc4",
+    "redis": "^2.3.0",
+    "redux": "^3.0.4",
+    "serve-static": "^1.10.0",
+    "thrift": "^0.9.3"
+  },
+  "main": "src/main/node/index.js",
+  "scripts": {
+    "api": "node src/main/node/index.js",
+    "web": "httpserver src/main/node/public",
+    "build": "browserify -t [ babelify --presets [ react ] ] src/main/node/jsx/springboard.js -o src/main/node/public/js/springboard.all.js",
+    "watch": "watchify -v -t [ babelify --presets [ react ] ] src/main/node/jsx/springboard.js -o src/main/node/public/js/springboard.all.js"
+  }
+}

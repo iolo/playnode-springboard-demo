@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>forum list</title>
+</head>
+<body>
+
+<div>
+    <div th:if="${currentUser}">
+        <span th:text="${currentUser.username}">currentUser.username</span>
+        <a href="logout">logout</a>
+    </div>
+    <div th:unless="${currentUser}">
+        <a href="login">login</a>
+        <a href="signup">signup</a>
+    </div>
+</div>
+
+<h1>forum list</h1>
+
+<ul>
+    <li th:each="forum: ${forums}">
+        <a th:href="@{post_list(forumId=${forum.id})}" th:text="${forum.title}">forum.title</a>
+    </li>
+</ul>
+
+</body>
+</html>

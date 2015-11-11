@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>springboard</title>
+</head>
+<body>
+<h1>springboard - server rendering</h1>
+
+<div id="springboard"><%- reactOutput %></div>
+<% if (forceServerSideRendering) { %>
+<script src="js/springboard.all.js"></script>
+<% } %>
+</body>
+</html>

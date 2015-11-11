@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>post form</title>
+</head>
+<body>
+
+<h1>post form</h1>
+
+<form action="post_save" method="POST">
+    <input name="forumId" type="hidden" th:value="${forumId}"/>
+
+    <p>
+        <label for="title">title:</label>
+        <input id="title" name="title" type="text" value=""/>
+    </p>
+
+    <p>
+        <textarea id="content" name="content"></textarea>
+    </p>
+
+    <p>
+        <input type="submit"/>
+        <input type="reset"/>
+    </p>
+</form>
+
+</body>
+</html>

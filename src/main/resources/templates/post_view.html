@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>post view</title>
+</head>
+<body>
+
+<div>
+    <div th:if="${currentUser}">
+        <span th:text="${currentUser.username}">currentUser.username</span>
+        <a href="logout">logout</a>
+    </div>
+    <div th:unless="${currentUser}">
+        <a href="login">login</a>
+        <a href="signup">signup</a>
+    </div>
+</div>
+
+<p>back to <a th:href="@{post_list(forumId=${post.forumId})}">post list</a></p>
+
+<h1 th:text="${post.title}">post.title</h1>
+
+<p th:text="'at ' + ${post.createdAt}">post.createdAt</p>
+
+<p th:text="'by ' + ${postUser.username}">post.user.username</p>
+
+<pre th:text="${post.content}">post.content</pre>
+
+<hr/>
+
+<h3>comments:</h3>
+
+<ul>
+    <li th:each="comment: ${comments}" th:id="'comment_' + ${comment.id}">
+        <pre th:text="${comment.content}">comment.content</pre>
+        <small th:text="'at ' + ${comment.createdAt}">comment.createdAt</small>
+        <small th:text="'by ' + ${commentUsers.get(comment.userId).username}">comment.user.username</small>
+    </li>
+</ul>
+
+<form th:if="${currentUser}" id="comment_form" action="comment_save" method="POST">
+    <input type="hidden" name="postId" ht:value="${postId}"/>
+
+    <p>
+        <textarea name="content"></textarea>
+        <input type="submit"/>
+    </p>
+</form>
+
+<div th:unless="${currentUser}">
+    <a th:href="@{login(returnUrl='post_view.jsp?postId=' + ${postId} + '#comment_form')}">login to write comment</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+node_modules/
+bower_components/
+target/
+.idea/
+*.iml
+npm-debug.log
+.DS_Store
+Thumbs.db

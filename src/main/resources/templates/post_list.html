@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>post list</title>
+</head>
+<body>
+
+<div>
+    <div th:if="${currentUser}">
+        <span th:text="${currentUser.username}">currentUser.username</span>
+        <a href="logout">logout</a>
+    </div>
+    <div th:unless="${currentUser}">
+        <a href="login">login</a>
+        <a href="signup">signup</a>
+    </div>
+</div>
+
+<p>back to <a href="forum_list">forum list</a></p>
+
+<h1 th:text="${forum.title}">title</h1>
+
+<ul>
+    <li th:each="post: ${posts}">
+        <a th:href="@{post_view(postId=${post.id})}" th:text="${post.title}">post.title</a>
+        <small th:text="'at ' + ${post.createdAt}">post.createdAt</small>
+        <small th:text="'by ' + ${postUsers.get(post.userId).username}">post.user.username</small>
+    </li>
+</ul>
+
+<div th:if="${currentUser}">
+    <a th:href="@{post_form(forumId=${forumId})}">write new post</a>
+</div>
+
+<div th:if="${currentUser}">
+    <a th:href="@{login(returnUrl='post_form?forumId='+${forumId})}">login and write post</a>
+</div>
+
+</body>
+</html>
